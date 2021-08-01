@@ -1,0 +1,6 @@
+{:up ["ALTER TABLE oauth_users DROP CONSTRAINT oauth_users_oauth_source_identity_key;"
+      "ALTER TABLE oauth_users drop column identity;"
+      "Delete from oauth_users where open_id is null;"
+      "alter table oauth_users alter column open_id set not null;"
+      "CREATE UNIQUE INDEX oauth_users_oauth_source_open_id_key ON oauth_users(oauth_source, open_id);"]
+ :down [""]}

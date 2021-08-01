@@ -1,0 +1,11 @@
+{:up ["CREATE TABLE projects (
+  id uuid DEFAULT uuid_generate_v4() NOT NULL UNIQUE,
+  user_id uuid NOT NULL,
+  repo_id uuid,
+  name text NOT NULL unique,
+  description text,
+  created_at timestamp with time zone DEFAULT timezone('UTC'::text, now()) NOT NULL,
+  CONSTRAINT created_at_chk CHECK ((date_part('timezone'::text, created_at) = '0'::double precision))
+);"
+      "ALTER table pages add column project_id uuid"]
+ :down ["drop table projects"]}

@@ -1,0 +1,2 @@
+{:up ["ALTER TABLE users ADD COLUMN website text;"]
+ :down ["alter table users drop column website"]}

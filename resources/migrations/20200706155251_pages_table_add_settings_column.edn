@@ -1,0 +1,2 @@
+{:up ["ALTER TABLE pages ADD COLUMN settings jsonb;"]
+ :down ["alter table pages drop column settings"]}

@@ -1,0 +1,13 @@
+{:up ["CREATE TABLE pages (
+  id uuid DEFAULT uuid_generate_v4() NOT NULL UNIQUE,
+  user_id uuid NOT NULL,
+  permalink text NOT NULL,
+  title text NOT NULL,
+  html text NOT NULL,
+  published_at timestamp with time zone DEFAULT timezone('UTC'::text, now()) NOT NULL,
+  updated_at timestamp with time zone DEFAULT timezone('UTC'::text, now()) NOT NULL,
+  CONSTRAINT published_at_chk CHECK ((date_part('timezone'::text, published_at) = '0'::double precision)),
+  CONSTRAINT updated_at_chk CHECK ((date_part('timezone'::text, updated_at) = '0'::double precision))
+);"
+      "CREATE UNIQUE INDEX idx_pages_user_page ON pages(user_id, permalink);"]
+ :down ["drop table pages"]}

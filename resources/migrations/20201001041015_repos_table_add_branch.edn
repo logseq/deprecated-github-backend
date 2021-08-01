@@ -1,0 +1,2 @@
+{:up ["ALTER TABLE repos ADD COLUMN branch text default 'master' not null;"]
+ :down ["alter table repos drop column branch"]}

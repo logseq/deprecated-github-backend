@@ -1,0 +1,2 @@
+{:up ["alter table users drop column repo_granted"]
+ :down ["alter table users add repo_granted boolean default false"]}

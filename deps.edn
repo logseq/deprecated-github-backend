@@ -1,0 +1,64 @@
+{:paths ["src/main" "resources"]
+ :deps
+ {org.clojure/clojure {:mvn/version "1.10.0"}
+  org.clojure/tools.nrepl {:mvn/version "0.2.12"}
+  clj-social {:mvn/version "0.1.9"}
+  hikari-cp {:mvn/version "2.9.0"}
+  io.pedestal/pedestal.jetty {:mvn/version "0.5.5"}
+  io.pedestal/pedestal.service {:mvn/version "0.5.5"}
+  toucan {:mvn/version "1.15.0"}
+  aero {:mvn/version "1.1.6"}
+  com.stuartsierra/component {:mvn/version "0.4.0"}
+  org.postgresql/postgresql {:mvn/version "42.2.8"}
+  buddy/buddy-hashers {:mvn/version "1.4.0"}
+  ragtime {:mvn/version "0.8.0"}
+  org.clojure/java.jdbc {:mvn/version "0.7.10"}
+  hiccup {:mvn/version "2.0.0-alpha2"}
+  hickory {:mvn/version "0.7.1"}
+  metosin/reitit-pedestal {:mvn/version "0.4.2"}
+  com.taoensso/nippy {:mvn/version "2.14.0"}
+  buddy/buddy-sign {:mvn/version "3.1.0"}
+  metosin/jsonista {:mvn/version "0.2.5"}
+  metosin/reitit {:mvn/version "0.4.2"}
+  honeysql {:mvn/version "0.9.8"}
+  clj-rss {:mvn/version "0.2.5"}
+  clj-time {:mvn/version "0.15.2"}
+
+  ;; s3
+  com.cognitect.aws/api {:mvn/version "0.8.456"}
+  com.cognitect.aws/endpoints {:mvn/version "1.1.11.753"}
+  com.cognitect.aws/s3 {:mvn/version "784.2.593.0"}
+  com.cognitect.aws/cloudfront {:mvn/version "789.2.611.0"}
+
+  com.amazonaws/aws-java-sdk-cloudfront {:mvn/version "1.11.744"}
+  com.amazonaws/aws-java-sdk-s3 {:mvn/version "1.11.744"}
+
+  lambdaisland/uri {:mvn/version "1.2.1"}
+  com.fzakaria/slf4j-timbre {:mvn/version "0.3.19"}
+  clj-http {:mvn/version "3.10.1"}
+  org.clojure/core.cache {:mvn/version "1.0.207"}}
+
+
+ :aliases {:test
+           {:extra-paths ["test"]
+            :extra-deps {org.clojure/test.check {:mvn/version "RELEASE"}}}
+           :runner
+           {:extra-deps
+            {com.cognitect/test-runner
+             {:git/url "https://github.com/cognitect-labs/test-runner",
+              :sha "76568540e7f40268ad2b646110f237a60295fa3c"}},
+            :main-opts ["-m" "cognitect.test-runner" "-d" "test"]}
+           :run
+           {:jvm-opts
+            ["-Duser.timezone=UTC" "-Dclojure.spec.check-asserts=true"],
+            :main-opts ["-m" "app.core"]}
+           :dev
+           {:extra-paths ["src/dev"]
+            :jvm-opts
+            ["-Duser.timezone=UTC" "-Dclojure.spec.check-asserts=true"]
+            :extra-deps
+            {io.pedestal/pedestal.service-tools {:mvn/version "0.5.7"}
+             org.clojure/tools.namespace {:mvn/version "0.2.11"}}}
+
+           :uberjar {:extra-deps {uberdeps {:mvn/version "0.1.10"}}
+                     :main-opts ["-m" "uberdeps.uberjar" "--target" "./target/logseq.jar"]}}}

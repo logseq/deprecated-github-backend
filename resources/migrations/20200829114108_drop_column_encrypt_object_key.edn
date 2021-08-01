@@ -1,0 +1,2 @@
+{:up ["alter table users drop column encrypt_object_key"]
+ :down ["alter table users add encrypt_object_key text default null"]}

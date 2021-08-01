@@ -1,0 +1,2 @@
+{:up ["alter table users drop github_installation_id"]
+ :down ["alter table users add column github_installation_id text UNIQUE"]}

@@ -1,0 +1,4 @@
+{:up ["ALTER TABLE projects ADD COLUMN settings jsonb;"
+      "ALTER TABLE projects drop COLUMN description;"]
+ :down ["alter table projects drop column settings"
+        "alter table projects add column description text"]}

@@ -1,0 +1,2 @@
+{:up ["alter table users add cors_proxy text default null"]
+ :down ["alter table users drop column cors_proxy"]}

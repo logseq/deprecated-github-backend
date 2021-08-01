@@ -1,0 +1,4 @@
+;; We have to keep installaction_id for now, read more at here:
+;; https://twitter.com/logseq/status/1299215315050491906
+{:up ["alter table users add column github_installation_id text UNIQUE"]
+ :down ["alter table users drop column github_installation_id"]}

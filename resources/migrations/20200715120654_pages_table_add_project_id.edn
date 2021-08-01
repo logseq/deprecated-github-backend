@@ -1,0 +1,8 @@
+{:up ["alter table pages drop column project_id"
+      "ALTER TABLE pages ADD COLUMN project_id uuid not null;"
+      "ALTER TABLE pages
+      ADD CONSTRAINT projects_pages_fkey FOREIGN KEY (project_id)
+      REFERENCES projects (id)
+      ON UPDATE CASCADE ON DELETE CASCADE;"]
+ :down ["ALTER TABLE pages DROP CONSTRAINT projects_pages_fkey; "
+        "ALTER TABLE pages DROP COLUMN project_id;"]}

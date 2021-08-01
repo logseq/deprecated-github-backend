@@ -1,0 +1,11 @@
+{:up ["DELETE FROM projects
+ WHERE NOT EXISTS(SELECT NULL
+                    FROM users u
+                   WHERE u.id = user_id)"
+      "ALTER TABLE projects
+      ADD CONSTRAINT projects_users_fkey FOREIGN KEY (user_id)
+      REFERENCES users (id)
+      ON UPDATE CASCADE ON DELETE CASCADE;"]
+ :down ["ALTER TABLE projects
+DROP CONSTRAINT projects_users_fkey;
+"]}

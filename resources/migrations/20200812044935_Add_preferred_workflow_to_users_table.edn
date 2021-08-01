@@ -1,0 +1,2 @@
+{:up ["alter table users add preferred_workflow text default 'now'"]
+ :down ["alter table users drop preferred_workflow"]}

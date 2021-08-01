@@ -1,0 +1,19 @@
+{:up ["CREATE TYPE oauth_source AS ENUM ('google', 'github');
+CREATE TABLE oauth_users (
+  id uuid DEFAULT uuid_generate_v4() NOT NULL UNIQUE,
+  user_id uuid NOT NULL REFERENCES users (id) ON DELETE CASCADE ON UPDATE CASCADE,
+  oauth_source oauth_source NOT NULL,
+  identity text NOT NULL,
+  name text,
+  email text,
+  avatar text,
+  open_id text,
+  updated_at timestamp with time zone DEFAULT timezone('UTC'::text, now()) NOT NULL,
+  created_at timestamp with time zone DEFAULT timezone('UTC'::text, now()) NOT NULL,
+  UNIQUE (oauth_source, identity),
+  CONSTRAINT updated_at_chk CHECK ((date_part('timezone'::text, updated_at) = '0'::double precision)),
+  CONSTRAINT created_at_chk CHECK ((date_part('timezone'::text, created_at) = '0'::double precision))
+  );
+"]
+ :down ["DROP TABLE oauth_users;
+ DROP TYPE oauth_source;"]}

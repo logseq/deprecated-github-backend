@@ -1,0 +1,2 @@
+{:up ["alter table pages drop column tags"]
+ :down ["ALTER TABLE pages ADD COLUMN tags text[];"]}

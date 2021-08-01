@@ -1,0 +1,2 @@
+{:up ["alter table repos add column installation_id text"]
+ :down ["alter table repos drop installation_id"]}

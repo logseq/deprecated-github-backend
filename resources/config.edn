@@ -1,0 +1,43 @@
+{:env #or [#env ENVIRONMENT "dev"]
+ :port #or [#env PORT 3000]
+ :website-uri #or [#env WEBSITE_URL "https://logseq.com"]
+ :asset-uri #or [#env ASSET_URI "https://asset.logseq.com"]
+ :cdn-uri #or [#env CDN_URI "cdn.logseq.com"]
+ :cookie-domain #or [#env COOKIE_DOMAIN ".logseq.com"]
+ :oauth {:github-app {:app-name #or [#env GITHUB_APP2_NAME "logseq-test"]
+                      :app-id #env GITHUB_APP2_ID
+                      :app-key #env GITHUB_APP2_KEY
+                      :app-secret #env GITHUB_APP2_SECRET
+                      :redirect-uri #env GITHUB_REDIRECT_URI
+                      :app-private-key-pem #env GITHUB_APP_PEM}
+         :google {:app-key #env GOOGLE_APP_KEY
+                  :app-secret #env GOOGLE_APP_SECRET
+                  :redirect-uri #env GOOGLE_REDIRECT_URI}}
+ :aws {:pk-path #env AWS_PK_PATH
+       :key-pair-id #env AWS_KEY_PAIR_ID
+       :access-key-id #env AWS_ACCESS_KEY_ID
+       :secret-access-key #env AWS_SECRET_ACCESS_KEY
+       :bucket #or [#env AWS_BUCKET "logseq-private"]
+       :region #env AWS_REGION}
+ :jwt-secret #env JWT_SECRET
+ :cookie-secret #env COOKIE_SECRET
+ :log-path #or [#env LOG_PATH "/app/logs/logseq"]
+ :hikari-spec {:auto-commit        true
+               :read-only          false
+               :connection-timeout 30000
+               :validation-timeout 5000
+               :idle-timeout       600000
+               :max-lifetime       1800000
+               :minimum-idle       10
+               :maximum-pool-size  48
+               :pool-name          "logseq-clj-db-pool"
+               :adapter            "postgresql"
+               :username           #env PG_USERNAME
+               :password           #env PG_PASSWORD
+               :database-name      "logseq"
+               :server-name        #or [#env PG_HOST "localhost"]
+               :port-number        #or [#env PG_PORT 5432]
+               :register-mbeans    false
+               :connection-init-sql "set time zone 'UTC'"}
+ :slack {:webhooks {:new-user #env LOGSEQ_SLACK_NEW_WEBHOOK
+                    :exception #env LOGSEQ_SLACK_EXCEPTION_WEBHOOK}}}

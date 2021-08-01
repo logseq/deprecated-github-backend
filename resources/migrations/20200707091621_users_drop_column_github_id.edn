@@ -1,0 +1,2 @@
+{:up ["alter table users drop column github_id"]
+ :down ["alter table users add column github_id text not null unique default ''"]}

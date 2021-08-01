@@ -1,0 +1,7 @@
+{:up ["ALTER TABLE repos
+      ADD CONSTRAINT repos_users_fkey FOREIGN KEY (user_id)
+      REFERENCES users (id)
+      ON UPDATE CASCADE ON DELETE CASCADE;"]
+ :down ["ALTER TABLE repos
+DROP CONSTRAINT repos_users_fkey;
+"]}

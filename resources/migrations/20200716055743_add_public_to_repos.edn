@@ -1,0 +1,2 @@
+{:up ["ALTER TABLE repos ADD COLUMN public boolean default false;"]
+ :down ["alter table repos drop column public"]}
