@@ -1,6 +1,9 @@
 * Logseq
   Logseq is A privacy-first, open-source platform for knowledge sharing and management.
 
+** *Warning*:
+   The GitHub integration is deprecated, we're not going to accept any PRs. 
+
 ** Website
    https://logseq.com
 
